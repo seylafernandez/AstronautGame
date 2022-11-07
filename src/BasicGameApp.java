@@ -39,13 +39,13 @@ public class BasicGameApp implements Runnable {
 
 	public BufferStrategy bufferStrategy;
 
-	public Image astroPic;
-	public Image alienPic;
+	public Image batmanPic;
+	public Image jokerPic;
 
 	//Declare the objects used in the program
 	//These are things that are made up of more than one variable type
-	private Astronaut astro;
-	public Astronaut alien;
+	private Hero batman;
+	public Hero joker;
 
 
 	// Main method definition
@@ -64,11 +64,11 @@ public class BasicGameApp implements Runnable {
 
 		//variable and objects
 		//create (construct) the objects needed for the game and load up
-		astroPic = Toolkit.getDefaultToolkit().getImage("astronaut.png"); //load the picture
-		astro = new Astronaut("astro",10,100); //construct the astronaut
+		batmanPic = Toolkit.getDefaultToolkit().getImage("batman.png"); //load the picture
+		batman = new Hero("batman",10,100); //construct the astronaut
 
-		alienPic = Toolkit.getDefaultToolkit().getImage("alien.png");
-		alien = new Astronaut("alien",700,100);
+		jokerPic = Toolkit.getDefaultToolkit().getImage("joker.png");
+		joker = new Hero("joker",700,100);
 	} // end BasicGameApp constructor
 
 
@@ -91,8 +91,8 @@ public class BasicGameApp implements Runnable {
 
 	public void moveThings() {
 		//calls the move( ) code in the objects
-		astro.wrap();
-		alien.bounce();
+		batman.wrap();
+		joker.bounce();
 
 	}
 
@@ -139,9 +139,9 @@ public class BasicGameApp implements Runnable {
 		g.clearRect(0, 0, WIDTH, HEIGHT);
 
 		//draw the image of the astronaut
-		g.drawImage(astroPic, astro.xpos, astro.ypos, astro.width, astro.height, null);
+		g.drawImage(batmanPic, batman.xpos, batman.ypos, batman.width, batman.height, null);
 
-		g.drawImage(alienPic,alien.xpos,alien.ypos,alien.width,alien.height,null);
+		g.drawImage(jokerPic,joker.xpos,joker.ypos,joker.width,joker.height,null);
 
 		g.dispose();
 		bufferStrategy.show();

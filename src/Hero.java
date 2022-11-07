@@ -3,7 +3,7 @@ import java.awt.*;
 /**
  * Created by chales on 11/6/2017.
  */
-public class Astronaut {
+public class Hero {
 
     //VARIABLE DECLARATION SECTION
     //Here's where you state which variables you are going to use.
@@ -19,12 +19,12 @@ public class Astronaut {
 
     //This is a constructor that takes 3 parameters.
     // This allows us to specify the hero's name and position when we build it.
-    public Astronaut(String pName, int pXpos, int pYpos) { // Astronaut constructor
+    public Hero(String pName, int pXpos, int pYpos) { // Astronaut constructor
         name = pName;
         xpos = pXpos;
         ypos = pYpos;
-        dx = 1;
-        dy = 1;
+        dx = 4;
+        dy = 4;
         width = 150;
         height = 150;
         isAlive = true;
@@ -42,19 +42,11 @@ public class Astronaut {
         ypos = ypos + dy;
 
         //if alien hits the right side, reverse dx direction
-        if (xpos == 1000-width) {
+        if (xpos >= 1000-width || xpos <= 0) {
             dx = -dx;
         }
 
-        if (xpos == 0) {
-            dx = -dx;
-        }
-
-        if (ypos == 700-height){
-            dy = -dy;
-        }
-
-        if (ypos == 0) {
+        if (ypos >= 700-height || ypos <= 0){
             dy = -dy;
         }
 
@@ -64,17 +56,23 @@ public class Astronaut {
     xpos = xpos + dx;
     ypos = ypos + dy;
 
-        if (xpos == 1000){
-            xpos = 0;
+        if (xpos >= 1000 && dx > 0){
+            xpos = -width;
         }
 
-        if (ypos == 700){
-            ypos = 0-height;
+        if ( xpos <= -width && dx < 0) {
+            xpos = 1000;
         }
 
-        if (ypos == 0) {
-            ypos = 700+height;
-        }}
+        if (ypos <= -height && dy < 0) {
+            ypos = 700;
+        }
+
+        if (ypos >= 700 && dy > 0){
+            ypos = -height;
+        }
+
+        }
 }
 
 
